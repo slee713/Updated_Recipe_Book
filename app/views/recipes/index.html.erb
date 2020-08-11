@@ -1,5 +1,17 @@
 <h1 class="header"> All Recipes </h1>
 
+<%= form_tag recipes_path, method: :get do %>
+    <%= radio_button_tag("difficulty", "easy", checked=(params[:difficulty] == "easy")) %>
+    <%= label_tag "difficulty_easy", "Easy" %>
+    <%= radio_button_tag "difficulty", "medium", checked=(params[:difficulty] == "medium") %>
+    <%= label_tag "difficulty_medium", "Medium" %>
+    <%= radio_button_tag "difficulty", "hard", checked=(params[:difficulty] == "hard")%>
+    <%= label_tag "difficulty_hard", "Hard" %>
+    <%= radio_button_tag "difficulty", "all", checked=(params[:difficulty] == "all")%>
+    <%= label_tag "difficulty_all", "All" %>
+    <%= submit_tag "Submit" %>
+<% end %>
+
 <ul> <% @recipes.each do |r| %>
      <li> <%= link_to r.name, recipe_path(r) %> </li>
     <%end%>
