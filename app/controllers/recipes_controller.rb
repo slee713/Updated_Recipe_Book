@@ -2,7 +2,15 @@ class RecipesController < ApplicationController
 before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 
 def index
-    @recipes = Recipe.all
+    if params[:difficulty] == "easy"
+        @recipes = Recipe.easy
+    elsif params[:difficulty] == "medium"
+        @recipes = Recipe.medium
+    elsif params[:difficulty] == "hard"
+        @recipes = Recipe.hard
+    else
+        @recipes = Recipe.all
+    end
 end
 
 def show
