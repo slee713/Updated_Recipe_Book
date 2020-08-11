@@ -1,0 +1,10 @@
+<h1 class="header"> All Ingredients </h1>
+
+<ul>
+    <% @ingredients.each do |i| %>
+        <li><%= link_to i.name , ingredient_path(i)%></li>
+        <% end %>
+</ul>
+
+<%= link_to "Add Ingredient", new_ingredient_path %><br>
+<%= link_to "Main Menu", home_path %>

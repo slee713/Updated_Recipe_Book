@@ -1,0 +1,19 @@
+<h1> <%=@recipe.name%> Details </h1>
+
+<h3> Duration: <%= @recipe.duration_in_min %> Minutes </h3>
+<h3> Difficulty: <%= @recipe.cap_difficulty %> </h3>
+<h3> Vegetarian: <%= @recipe.nice_veg %> </h3>
+
+<h3> Ingredients: </h3>
+
+<ul> <% @recipe.ingredients.each do |i| %>
+        <li><%= link_to i.name, ingredient_path(i) %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Edit Recipe", edit_recipe_path(@recipe) %> <br>
+<%= link_to "Delete this Recipe", recipe_path(@recipe), method: :delete %> <br>
+<%= link_to "All Recipes", recipes_path %>
+
+
+

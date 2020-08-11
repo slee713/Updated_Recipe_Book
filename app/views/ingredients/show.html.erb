@@ -1,0 +1,17 @@
+<h1> Ingredient Detail </h1>
+
+<h3><%= "Name: #{@ingredient.name}" %> </h3>
+<% if @ingredient.recipes.any? %>
+    <h3>Found in the Following Recipes:</h3>
+    <ul>
+        <% @ingredient.recipes.each do |recipe| %>
+            <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+            <% end %>
+    </ul>
+<% else %>
+    <h3> There are no recipes that use this ingredient </h3>
+<% end %>
+
+<h4><%= link_to "Edit Ingredient", edit_ingredient_path(@ingredient) %></h4>
+<h4><%= link_to "Delete Ingredient", ingredient_path(@ingredient), method: :delete, data: {confirm: "Are you sure you want to delete #{@ingredient.name}?"} %></h4>
+<h4><%= link_to "All Ingredients", ingredients_path %></h4>
